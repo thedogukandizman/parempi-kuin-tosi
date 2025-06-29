@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap');
+
+/* CSS Variables for theming */
+:root {
+  --bg-light: #FAFAF9;
+  --bg-dark: #1B1917;
+  --text-light: #1B1917;
+  --text-dark: #ffffff;
+  --accent: #A8A29D;
+  --example-light: #57534E;
+  --example-dark: #D6D3D1;
+  --error: #EF4444;
+  --hover-light: #f3f4f6;
+  --hover-dark: #374151;
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* App container */
+.app {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app.dark {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Dark mode styles */
+:root.dark .app {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  z-index: 10;
+}
+
+.title {
+  font-family: 'EB Garamond', serif;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+  margin: 0;
+}
+
+.theme-toggle {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover-light);
+}
+
+:root.dark .theme-toggle {
+  color: var(--text-dark);
+}
+
+:root.dark .theme-toggle:hover {
+  background-color: var(--hover-dark);
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.icon-small {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Main content */
+.main {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 48rem;
+  padding: 0 1.5rem;
+}
+
+/* Input section */
+.input-section {
+  display: flex;
+  justify-content: center;
+  transition: transform 0.5s ease;
+  margin-bottom: 2rem;
+}
+
+.input-section.typing {
+  transform: translateY(-1rem);
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: 'EB Garamond', serif;
+  font-size: 2.5rem;
+}
+
+.very-label {
+  color: var(--text-light);
+}
+
+:root.dark .very-label {
+  color: var(--text-dark);
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.adjective-input {
+  width: 16rem;
+  padding: 0 0 0.75rem 0;
+  border: none;
+  border-bottom: 1px solid var(--accent);
+  background: transparent;
+  color: var(--text-light);
+  font-family: 'EB Garamond', serif;
+  font-size: 2.5rem;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+:root.dark .adjective-input {
+  color: var(--text-dark);
+}
+
+.adjective-input::placeholder {
+  color: var(--accent);
+  opacity: 1;
+}
+
+.adjective-input:focus {
+  border-color: var(--accent);
+}
+
+.search-button {
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  position: relative;
+  top: 0.25rem;
+}
+
+.search-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Result section */
+.result-section {
+  transition: opacity 0.3s ease;
+}
+
+.result-section.fade {
+  opacity: 0;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.suggestion-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.suggestion {
+  font-family: 'EB Garamond', serif;
+  font-size: 3.75rem;
+  color: var(--text-light);
+  line-height: 1.1;
+}
+
+:root.dark .suggestion {
+  color: var(--text-dark);
+}
+
+.refresh-button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.refresh-button:hover {
+  background-color: var(--hover-light);
+}
+
+.refresh-button:disabled {
+  opacity: 0.5;
+}
+
+.refresh-button.loading {
+  animation: spin 1s linear infinite;
+}
+
+:root.dark .refresh-button {
+  color: var(--text-dark);
+}
+
+:root.dark .refresh-button:hover {
+  background-color: var(--hover-dark);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Examples */
+.examples {
+  max-width: 36rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.example {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--example-light);
+  opacity: 0.8;
+}
+
+:root.dark .example {
+  color: var(--example-dark);
+}
+
+/* Error section */
+.error-section {
+  display: flex;
+  justify-content: center;
+  animation: shake 0.5s ease-in-out;
+}
+
+.error-message {
+  font-family: 'EB Garamond', serif;
+  font-size: 2rem;
+  color: var(--error);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .input-wrapper {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .adjective-input {
+    font-size: 2rem;
+    width: 14rem;
+  }
+  
+  .suggestion {
+    font-size: 3rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .header {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .input-wrapper {
+    font-size: 1.5rem;
+  }
+  
+  .adjective-input {
+    font-size: 1.5rem;
+    width: 12rem;
+  }
+  
+  .suggestion {
+    font-size: 2.5rem;
+  }
+  
+  .example {
+    font-size: 1rem;
+  }
+}
