@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/parempi-kuin-tosi/static/css/main.ab686f51.css",
+    "main.js": "/parempi-kuin-tosi/static/js/main.8b1c4dde.js",
+    "index.html": "/parempi-kuin-tosi/index.html",
+    "main.ab686f51.css.map": "/parempi-kuin-tosi/static/css/main.ab686f51.css.map",
+    "main.8b1c4dde.js.map": "/parempi-kuin-tosi/static/js/main.8b1c4dde.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ab686f51.css",
+    "static/js/main.8b1c4dde.js"
+  ]
+}
